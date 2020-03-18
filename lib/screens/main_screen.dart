@@ -1,40 +1,19 @@
 import 'package:flutter/material.dart';
-import './tela1_screen.dart';
 import '../widgets/myCard.dart';
+import '../widgets//myDrawer.dart';
 
 class MainScreen extends StatelessWidget {
-  void goToTela1Screen(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-      return Tela1Screen();
-    }));
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Teste Navigator'),
+        title: Text('Home'),
       ),
       body: Center(
-        child: Column(
-          children: <Widget>[
-            RaisedButton(
-              onPressed: () => goToTela1Screen(context),
-              child: Text(
-                'Tela 1',
-              ),
-            ),
-            RaisedButton(
-              onPressed: null,
-              child: Text(
-                'Tela 2',
-              ),
-            ),
-            MyCard()
-          ],
-        ),
+        child: Text('Home Screen')
       ),
-      backgroundColor: Colors.grey,
+      drawer: MyDrawer()
     );
   }
 }

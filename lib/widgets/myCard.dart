@@ -9,11 +9,11 @@ class MyCard extends StatelessWidget {
           children: <Widget>[
             FlatButton(
               child: const Text('BUY TICKETS'),
-              onPressed: () {/* ... */},
+              onPressed: () {},
             ),
             FlatButton(
               child: const Text('LISTEN'),
-              onPressed: () {/* ... */},
+              onPressed: () {},
             ),
           ],
         ),
