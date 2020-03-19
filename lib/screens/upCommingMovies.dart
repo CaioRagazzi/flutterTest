@@ -1,25 +1,41 @@
+import 'package:entertainment_app/models/Movie.dart';
 import 'package:flutter/material.dart';
 import 'package:entertainment_app/widgets/myCard.dart';
 import 'package:entertainment_app/plugins/httpService.dart';
 
-class UpCommingMoviesScreen extends StatelessWidget {
-  static const apiKey = '861e58c6a138f67504e8efd54cafa989';
+class UpCommingMoviesScreen extends StatefulWidget {
+  @override
+  _UpCommingMoviesScreenState createState() => _UpCommingMoviesScreenState();
+}
 
-  var url =
-      'https://api.themoviedb.org/3/movie/upcoming?api_key=$apiKey&language=en-US&page=1';
+class _UpCommingMoviesScreenState extends State<UpCommingMoviesScreen> {
 
-  UpCommingMoviesScreen() {
+  var movies = List<Movie>();
+
+  _UpCommingMoviesScreenState() {
+    getMovies();
+  }
+
+  getMovies() async {
     HttpService service = HttpService();
-    service.getMovies();
+    var listMovies = await service.getMovies();
+    setState(() {
+      movies = listMovies;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('UpComming Movies'),
-      ),
-      body: MyCard(),
-    );
+        appBar: AppBar(
+          title: Text('UpComming Movies'),
+        ),
+        body: Column(
+          children: <Widget>[
+            ...movies.map((item) {
+              MyCard();
+            }).toList()
+          ],
+        ));
   }
 }
