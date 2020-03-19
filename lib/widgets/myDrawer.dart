@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:entertainment_app/screens/tela1_screen.dart';
+import 'package:entertainment_app/screens/UpCommingMovies.dart';
 
 class MyDrawer extends StatelessWidget {
 
   void goToTela1Screen(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-      return Tela1Screen();
+      return UpCommingMoviesScreen();
     }));
   }
 
