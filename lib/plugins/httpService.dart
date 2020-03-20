@@ -1,13 +1,12 @@
-import 'dart:convert';
-
 import 'package:entertainment_app/models/Movie.dart';
 import 'package:http/http.dart';
+import 'dart:convert';
 
 class HttpService {
   static String apiKey = '861e58c6a138f67504e8efd54cafa989';
 
   final String url =
-      'https://api.themoviedb.org/3/movie/upcoming?api_key=$apiKey&language=en-US&page=1';
+      Uri.encodeFull('https://api.themoviedb.org/3/movie/upcoming?api_key=$apiKey&language=en-US&page=1');
 
   Future<List<Movie>> getMovies() async {
     Response res = await get(url);
